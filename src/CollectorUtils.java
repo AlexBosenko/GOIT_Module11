@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class CollectorUtils {
@@ -15,15 +16,12 @@ public class CollectorUtils {
         return (A * seed + C) % M;
     }
     public static String evenOrderString(List<String> str) {
-        AtomicInteger order = new AtomicInteger(0);
-
-        String result = str.stream()
-                .map(s -> order.addAndGet(1) + ". " + s)
-                .filter(s -> order.get() % 2 != 0)
+        String result = IntStream.range(0, str.size())
+                .filter(i -> i % 2 != 0)
+                .mapToObj(i -> i + ". " + str.get(i))
                 .collect(Collectors.joining(", "));
 
         return result;
-
     }
 
     public static List<String> reverseList(List<String> str) {
