@@ -26,7 +26,7 @@ public class CollectorTest {
         System.out.println("Task 3 result : " + numberString);
 
         //Task 4
-        Stream<Long> streamRandom = Stream.iterate(0L, CollectorUtils::next);
+        Stream<Long> streamRandom = Stream.iterate(0L, CollectorUtils::randomNext);
         System.out.println("Task 4 result : ");
         streamRandom.limit(20)
                 .peek(System.out::println)

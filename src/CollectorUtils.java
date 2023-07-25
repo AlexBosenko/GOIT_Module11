@@ -11,7 +11,7 @@ public class CollectorUtils {
     private static final int C = 11;
     private static final long M = (long) Math.pow(2, 48);
 
-    public static long next(long seed) {
+    public static long randomNext(long seed) {
         return (A * seed + C) % M;
     }
     public static String evenOrderString(List<String> str) {
